@@ -25,7 +25,7 @@ export const products = [
     name: "Sousplat 2 Cores",
     description: "Feito com fio ecológico, 85% algodão e 15% outras fibras. Tamanho da peça: 31cm aprox.",
     price: 25,
-    image: "assets/images/amigurumi-coelho.jpg",
+    image: "./assets/sousplat2cores.jpg",
   },
   {
     id: "bolsa-palha",
