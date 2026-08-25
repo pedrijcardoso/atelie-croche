@@ -70,6 +70,10 @@ ul {
   --color-border:       #E3D3BB;
   --color-white:        #FFFFFF;
   --color-danger:       #B4483A;
+  --color-preto-suave:  #121212;
+  --color-cinza-carvao: #1C1C1C;
+  --color-branco-neve:  #FAFAFA;
+  --color-branco-fumaca:#F5F5F5;
 
   /* Tipografia: par serifado (personalidade artesanal) + sans utilitária */
   --font-display: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
@@ -106,7 +110,7 @@ ul {
 body {
   font-family: var(--font-body);
   color: var(--color-cocoa);
-  background-color: var(--color-cream);
+  background-color: var(--color-branco-neve);
   line-height: 1.6;
   font-size: var(--fs-base);
   -webkit-font-smoothing: antialiased;
