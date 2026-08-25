@@ -1,0 +1,365 @@
+/* =====================================================================
+   ARQUIVO: style.css
+   PASTA: css/
+   =====================================================================
+   Este arquivo contém: reset básico, variáveis globais (design tokens),
+   tipografia, e estrutura de layout fundamental (container, seções).
+   Paleta inspirada em fios de lã, algodão cru e madeira: tons terrosos,
+   bege e marrom suave, com um verde-sálvia discreto como contraponto.
+   ===================================================================== */
+
+/* ---------- RESET BÁSICO ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Respeita usuários que preferem menos animação (acessibilidade) */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------- VARIÁVEIS GLOBAIS (DESIGN TOKENS) ---------- */
+:root {
+  /* Paleta artesanal: barbante cru, terracota, cacau e sálvia */
+  --color-cream:        #FBF6EE; /* fundo principal — algodão cru */
+  --color-oat:          #F1E4D0; /* fundo alternado — linho */
+  --color-clay:         #C1704B; /* terracota — cor de destaque/ação */
+  --color-clay-dark:    #A2593A; /* terracota escurecida — hover */
+  --color-cocoa:        #4A3327; /* marrom cacau — texto principal */
+  --color-cocoa-soft:   #6E5644; /* marrom suave — texto secundário */
+  --color-sage:         #808A5E; /* verde-sálvia — contraponto/sucesso */
+  --color-sage-dark:    #656E49;
+  --color-border:       #E3D3BB;
+  --color-white:        #FFFFFF;
+  --color-danger:       #B4483A;
+
+  /* Tipografia: par serifado (personalidade artesanal) + sans utilitária */
+  --font-display: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, sans-serif;
+
+  --fs-xs: 0.8rem;
+  --fs-sm: 0.9rem;
+  --fs-base: 1rem;
+  --fs-md: 1.15rem;
+  --fs-lg: 1.5rem;
+  --fs-xl: 2rem;
+  --fs-xxl: 2.75rem;
+
+  /* Espaçamentos em escala consistente */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+
+  --radius-sm: 6px;
+  --radius-md: 14px;
+  --radius-lg: 28px;
+
+  --shadow-soft: 0 8px 24px rgba(74, 51, 39, 0.12);
+  --shadow-strong: 0 16px 40px rgba(74, 51, 39, 0.22);
+
+  --max-width: 1180px;
+  --transition-base: 0.2s ease;
+}
+
+/* ---------- TIPOGRAFIA GLOBAL ---------- */
+body {
+  font-family: var(--font-body);
+  color: var(--color-cocoa);
+  background-color: var(--color-cream);
+  line-height: 1.6;
+  font-size: var(--fs-base);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  color: var(--color-cocoa);
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+/* Foco visível para navegação via teclado — acessibilidade (WCAG) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--color-sage);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ---------- LAYOUT / ESTRUTURA ---------- */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+.section-title {
+  font-size: var(--fs-xl);
+  margin-bottom: var(--space-xs);
+}
+
+.section-subtitle {
+  color: var(--color-cocoa-soft);
+  margin-bottom: var(--space-lg);
+  max-width: 60ch;
+}
+
+/* ---------- CABEÇALHO ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background-color: var(--color-cream);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--space-sm);
+  gap: var(--space-sm);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
+  font-weight: 700;
+}
+
+.brand__icon {
+  font-size: 1.4rem;
+}
+
+.main-nav__list {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.main-nav a {
+  font-weight: 600;
+  color: var(--color-cocoa-soft);
+  transition: color var(--transition-base);
+}
+
+.main-nav a:hover {
+  color: var(--color-clay);
+}
+
+/* ---------- HERO / BANNER ---------- */
+.hero {
+  position: relative;
+  padding-block: var(--space-xl) var(--space-lg);
+  background: linear-gradient(180deg, var(--color-oat) 0%, var(--color-cream) 100%);
+  overflow: hidden;
+}
+
+.hero__inner {
+  max-width: 760px;
+  text-align: center;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.hero__eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--color-sage-dark);
+}
+
+.hero__title {
+  font-size: var(--fs-xxl);
+}
+
+.hero__subtitle {
+  color: var(--color-cocoa-soft);
+  font-size: var(--fs-md);
+  max-width: 55ch;
+}
+
+/* Divisor decorativo em "ponto de crochê" — elemento de assinatura visual,
+   feito só com CSS (gradiente radial repetido), sem imagens externas. */
+.hero__stitch-divider,
+.stitch-divider {
+  height: 22px;
+  width: 100%;
+  background-image: radial-gradient(circle at 11px 0, transparent 10px, var(--color-cream) 11px);
+  background-size: 22px 22px;
+  background-repeat: repeat-x;
+  background-position: bottom;
+}
+
+/* ---------- CATÁLOGO ---------- */
+.catalog {
+  padding-block: var(--space-xl);
+}
+
+/* ---------- SOBRE ---------- */
+.about {
+  background-color: var(--color-oat);
+  padding-block: var(--space-xl);
+}
+
+.about__inner {
+  max-width: 760px;
+  margin-inline: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.about__text p + p {
+  margin-top: var(--space-sm);
+}
+
+/* ---------- CONTATO ---------- */
+.contact {
+  padding-block: var(--space-xl);
+  text-align: center;
+}
+
+.contact__inner {
+  max-width: 600px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+/* ---------- RODAPÉ ---------- */
+.site-footer {
+  background-color: var(--color-cocoa);
+  color: var(--color-cream);
+  text-align: center;
+  padding-block: var(--space-md);
+  font-size: var(--fs-sm);
+}
+
+.footer__note {
+  opacity: 0.75;
+  margin-top: var(--space-xs);
+}
+/* =====================================================================
+   MÁSCARA DE OCULTAÇÃO E ESTILOS DO CARRINHO (DRAWER)
+   ===================================================================== */
+
+/* Regra universal: oculta qualquer elemento com o atributo [hidden] */
+[hidden] {
+  display: none !important;
+}
+
+/* Fundo escurecido atrás do carrinho */
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(74, 51, 39, 0.5);
+  z-index: 50;
+  backdrop-filter: blur(2px);
+}
+
+/* Painel lateral do carrinho */
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 400px;
+  background-color: var(--color-cream);
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-strong);
+}
+
+.cart-drawer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cart-drawer__close {
+  font-size: 1.8rem;
+  line-height: 1;
+  color: var(--color-cocoa-soft);
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+}
+
+.cart-drawer__items {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-md);
+}
+
+.cart-drawer__footer {
+  padding: var(--space-md);
+  border-top: 1px solid var(--color-border);
+  background-color: var(--color-oat);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-md);
+  font-weight: 700;
+}
+
