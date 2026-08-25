@@ -21,10 +21,10 @@
 
 export const products = [
   {
-    id: "amigurumi-coelho",
-    name: "Amigurumi Coelhinho",
-    description: "Coelhinho de crochê macio, ideal para presentear ou decorar.",
-    price: 89.9,
+    id: "sousplat-duas-cores",
+    name: "Sousplat 2 Cores",
+    description: "Feito com fio ecológico, 85% algodão e 15% outras fibras. Tamanho da peça: 31cm aprox.",
+    price: 25,
     image: "assets/images/amigurumi-coelho.jpg",
   },
   {
