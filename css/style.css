@@ -165,7 +165,7 @@ input:focus-visible {
 }
 .brand__iconn {
   display: inline-block; /* Retorna o fluxo de texto para alinhar com outros elementos */
-  height: 40px;          /* Defina a altura desejada */
+  height: 100px;          /* Defina a altura desejada */
   width: auto;           /* Garante que a largura se ajuste proporcionalmente */
 }
 .brand {
