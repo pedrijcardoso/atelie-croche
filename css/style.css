@@ -163,7 +163,11 @@ input:focus-visible {
   padding-block: var(--space-sm);
   gap: var(--space-sm);
 }
-
+.brand__icon {
+  height: 40px; /* Ajuste para a altura desejada */
+  width: auto;  /* Mantém a proporção da imagem */
+  object-fit: contain;
+}
 .brand {
   display: flex;
   align-items: center;
