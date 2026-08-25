@@ -23,7 +23,7 @@
 // ATENÇÃO: substitua pelo número real do ateliê no formato internacional,
 // somente dígitos (código do país + DDD + número). Exemplo para Brasil:
 // 55 + DDD (2 dígitos) + número (8 ou 9 dígitos).
-const WHATSAPP_NUMBER = "5537998400069"; // <-- TROQUE PELO NÚMERO REAL
+const WHATSAPP_NUMBER = "5537991440673"; // <-- TROQUE PELO NÚMERO REAL
 
 /**
  * Formata um valor numérico como moeda brasileira (R$ 0,00).
