@@ -163,10 +163,11 @@ input:focus-visible {
   padding-block: var(--space-sm);
   gap: var(--space-sm);
 }
-.brand___icon {
-  height: 40px; /* Ajuste para a altura desejada */
-  width: auto;  /* Mantém a proporção da imagem */
-  object-fit: contain;
+.brand__iconn {
+  height: 40px;       /* Altere este valor para o tamanho que desejar */
+  width: auto;        /* Mantém a proporção correta para não distorcer */
+  max-height: 100%;   /* Garante que ela não ultrapasse a altura do cabeçalho */
+  object-fit: contain; /* Ajusta a imagem mantendo a proporção */
 }
 .brand {
   display: flex;
