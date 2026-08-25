@@ -164,10 +164,9 @@ input:focus-visible {
   gap: var(--space-sm);
 }
 .brand__iconn {
-  height: 40px;       /* Altere este valor para o tamanho que desejar */
-  width: auto;        /* Mantém a proporção correta para não distorcer */
-  max-height: 100%;   /* Garante que ela não ultrapasse a altura do cabeçalho */
-  object-fit: contain; /* Ajusta a imagem mantendo a proporção */
+  display: inline-block; /* Retorna o fluxo de texto para alinhar com outros elementos */
+  height: 40px;          /* Defina a altura desejada */
+  width: auto;           /* Garante que a largura se ajuste proporcionalmente */
 }
 .brand {
   display: flex;
