@@ -1,64 +1,32 @@
 <!DOCTYPE html>
-<!--
-  =====================================================================
-  ARQUIVO: index.html
-  PASTA: / (raiz do projeto)
-  =====================================================================
-  SEGURANÇA — HEADERS RECOMENDADOS NO SERVIDOR (NÃO fazem parte do HTML,
-  precisam ser configurados no servidor/hospedagem, ex: Netlify, Vercel,
-  Apache .htaccess ou Nginx):
-
-  1) Content-Security-Policy (CSP):
-     Content-Security-Policy: default-src 'self'; img-src 'self' data:;
-     script-src 'self'; style-src 'self'; object-src 'none';
-     base-uri 'self'; form-action 'self'; frame-ancestors 'none';
-     Já incluímos uma versão via <meta> abaixo para reforço no navegador,
-     mas o ideal é sempre configurar isso também no servidor (HTTP header),
-     pois a <meta> não cobre 100% das diretivas (ex: frame-ancestors).
-
-  2) Strict-Transport-Security (HSTS) — só pode ser definido via header
-     HTTP (o servidor), não existe equivalente em <meta>:
-     Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
-
-  3) X-Content-Type-Options: nosniff
-  4) X-Frame-Options: DENY
-  5) Referrer-Policy: strict-origin-when-cross-origin
-  6) Permissions-Policy: geolocation=(), microphone=(), camera=()
-
-  Essas diretivas evitam clickjacking, MIME sniffing, vazamento de
-  referrer e execução de scripts não autorizados (XSS).
-  =====================================================================
--->
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sally — Crochê Artesanal</title>
   <meta name="description" content="Peças de crochê artesanal feitas à mão com carinho. Amigurumis, bolsas, acessórios e encomendas personalizadas.">
-  <meta name="theme-color" content="#8C5A3C">
+  <meta name="theme-color" content="#8B5A3C">
 
-  <!-- SEGURANÇA: reforço de Content-Security-Policy via meta tag.
-       Impede carregamento de scripts/estilos externos não autorizados,
-       reduzindo a superfície de ataques XSS. img-src permite 'data:'
-       porque usamos SVG de placeholder embutido (data URI) no JS. -->
+  <!-- CSP Atualizado para permitir a fonte moderna do Google Fonts -->
   <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';">
-  <!-- SEGURANÇA: impede que o navegador tente "adivinhar" tipos MIME -->
+        content="default-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; object-src 'none'; base-uri 'self'; form-action 'self';">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <!-- SEGURANÇA: controla quanta informação de referência é enviada -->
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
-  <!-- Arquivos CSS: carregados na ordem base -> componentes -> responsivo -->
+  <!-- Fontes Google para Padrão 2026 (Playfair Display + Plus Jakarta Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/components.css">
   <link rel="stylesheet" href="./css/responsive.css">
 
-  <!-- Ícone simples via emoji/SVG data URI (evita requisição externa) -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧶</text></svg>">
 </head>
 <body>
 
-  <!-- ============================ CABEÇALHO ============================ -->
+  <!-- ============================ CABEÇALHO GLASS ============================ -->
   <header class="site-header" role="banner">
     <div class="container header__inner">
       <a href="#topo" class="brand" aria-label="Sally — página inicial">
@@ -73,9 +41,6 @@
         </ul>
       </nav>
 
-      <!-- Botão do carrinho: contador é atualizado dinamicamente pelo JS
-           (ui.js) usando textContent — nunca innerHTML — para exibir o
-           número, prevenindo qualquer injeção via manipulação de estado. -->
       <button
         id="cart-toggle"
         class="cart-button"
@@ -92,25 +57,17 @@
 
   <main id="topo">
 
-    <!-- ============================ BANNER / HERO ============================ -->
+    <!-- ============================ HERO 2026 ============================ -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="container hero__inner">
-        <p class="hero__eyebrow">Feito à mão, ponto a ponto</p>
+        <div class="hero__badge">✨ 100% Feito à Mão • Produção Afetiva</div>
         <h1 id="hero-title" class="hero__title">
-          Crochê artesanal com alma, para quem valoriza o feito à mão
+          Crochê artesanal com <em>alma</em> e propósito
         </h1>
         <p class="hero__subtitle">
-          Cada peça da Sally carrega tempo, cuidado e
-          tradição. Amigurumis, bolsas, tapetes e encomendas exclusivas,
-          tecidos fio a fio especialmente para você.
+          Cada peça da Sally carrega tempo, cuidado e tradição. Amigurumis, bolsas e encomendas exclusivas, tecidos ponto a ponto para você.
         </p>
 
-        <!-- Botão de destaque: abre o WhatsApp com mensagem pré-formatada.
-             O texto é montado em js/modules/whatsapp.js e passa por
-             encodeURIComponent() antes de ir para a URL, evitando
-             injeção de parâmetros. O atributo rel abaixo é uma proteção
-             extra de HTML (defesa em profundidade), mesmo o link sendo
-             aberto via JS/window.open com rel equivalente aplicado. -->
         <a
           id="custom-order-btn"
           class="btn btn--primary btn--lg"
@@ -120,44 +77,38 @@
           Pedir Peça Personalizada Exclusiva
         </a>
       </div>
-      <div class="hero__stitch-divider" aria-hidden="true"></div>
     </section>
 
     <!-- ============================ CATÁLOGO ============================ -->
     <section id="produtos" class="catalog" aria-labelledby="catalog-title">
       <div class="container">
-        <h2 id="catalog-title" class="section-title">Nossos Produtos</h2>
-        <p class="section-subtitle">
-          Peças únicas, feitas em pequenos lotes. Disponibilidade sujeita a estoque.
-        </p>
+        <div class="catalog__header">
+          <div>
+            <h2 id="catalog-title" class="section-title">Nossos Produtos</h2>
+            <p class="section-subtitle">
+              Peças exclusivas confeccionadas em pequenos lotes.
+            </p>
+          </div>
+        </div>
 
-        <!-- Grid de produtos: preenchido dinamicamente por js/modules/ui.js
-             a partir de js/data/products.js. Nenhum dado é inserido via
-             innerHTML sem sanitização (ver função sanitizeText em ui.js). -->
         <div id="product-grid" class="product-grid" aria-live="polite">
-          <!-- Cards de produto injetados via JavaScript -->
+          <!-- Injetado via JS -->
         </div>
       </div>
-      <div class="stitch-divider" aria-hidden="true"></div>
     </section>
 
     <!-- ============================ SOBRE ============================ -->
     <section id="sobre" class="about" aria-labelledby="about-title">
       <div class="container about__inner">
-        <div class="about__text">
+        <div class="about__card">
           <h2 id="about-title" class="section-title">Sobre a Sally</h2>
           <p>
-            A Sally nasceu do amor pelo artesanato e pela tradição
-            das agulhas e novelos passadas de geração em geração. Cada peça
-            é confeccionada manualmente, com fios selecionados e atenção a
-            cada detalhe, unindo técnica, afeto e sustentabilidade.
+            A Sally nasceu do amor pelo artesanato e pela tradição das agulhas e novelos passadas de geração em geração. Cada peça é confeccionada manualmente, com fios selecionados e atenção a cada detalhe, unindo técnica, afeto e sustentabilidade.
           </p>
           <p>
-            Trabalhamos também com <strong>encomendas personalizadas</strong>,
-            transformando sua ideia em uma peça exclusiva de crochê.
+            Trabalhamos também com <strong>encomendas personalizadas</strong>, transformando sua ideia em uma peça exclusiva de crochê.
           </p>
         </div>
-        <div class="about__stitch" aria-hidden="true"></div>
       </div>
     </section>
 
@@ -188,11 +139,9 @@
     </div>
   </footer>
 
-  <!-- ============================ OVERLAY DO CARRINHO ============================ -->
-  <!-- O overlay escurece o fundo e permite fechar o carrinho ao clicar fora -->
+  <!-- ============================ MODAL / DRAWER CARRINHO ============================ -->
   <div id="cart-overlay" class="cart-overlay" hidden></div>
 
-  <!-- ============================ DRAWER DO CARRINHO (MODAL LATERAL) ============================ -->
   <aside
     id="cart-drawer"
     class="cart-drawer"
@@ -211,10 +160,6 @@
       </button>
     </div>
 
-    <!-- Lista de itens do carrinho: renderizada dinamicamente.
-         Nomes de produtos usam textContent (nunca innerHTML) — ver
-         função renderCartItems() em js/modules/ui.js — prevenindo XSS
-         mesmo que o texto contenha caracteres como < > " ' . -->
     <div id="cart-items" class="cart-drawer__items" aria-live="polite">
       <p class="cart-empty" id="cart-empty-msg">Seu carrinho está vazio.</p>
     </div>
@@ -234,10 +179,6 @@
     </div>
   </aside>
 
-  <!-- ============================ SCRIPTS (ES MODULES) ============================
-       type="module" garante escopo isolado, carregamento assíncrono (defer
-       implícito) e permite o uso de import/export nativos, sem necessidade
-       de bundlers ou bibliotecas externas. -->
   <script type="module" src="js/app.js"></script>
 </body>
 </html>
