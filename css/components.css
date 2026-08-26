@@ -4,6 +4,10 @@
    =====================================================================
    Estilos de componentes reutilizáveis: botões, cartão de produto,
    botão/ícone do carrinho, drawer (painel lateral) do carrinho e overlay.
+
+   NOVA IDENTIDADE VISUAL: preto & branco como base, marrom como único
+   destaque (accent). Nenhuma classe foi renomeada — apenas os valores
+   de cor, usando os tokens definidos em style.css :root.
    ===================================================================== */
 
 /* ---------- BOTÕES ---------- */
@@ -21,28 +25,32 @@
   border: 2px solid transparent;
 }
 
+/* Botão primário: marrom sólido — usado nos CTAs principais (pedido
+   personalizado, finalizar compra) */
 .btn--primary {
-  background-color: var(--color-clay);
+  background-color: var(--color-brown);
   color: var(--color-white);
   box-shadow: var(--shadow-soft);
 }
 
 .btn--primary:hover,
 .btn--primary:focus-visible {
-  background-color: var(--color-clay-dark);
+  background-color: var(--color-brown-dark);
   transform: translateY(-2px);
   box-shadow: var(--shadow-strong);
 }
 
+/* Botão secundário: contorno marrom sobre fundo claro, preenche marrom
+   no hover — usado no botão de contato geral */
 .btn--secondary {
   background-color: transparent;
-  border-color: var(--color-sage);
-  color: var(--color-sage-dark);
+  border-color: var(--color-brown);
+  color: var(--color-brown-dark);
 }
 
 .btn--secondary:hover,
 .btn--secondary:focus-visible {
-  background-color: var(--color-sage);
+  background-color: var(--color-brown);
   color: var(--color-white);
 }
 
@@ -71,13 +79,14 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background-color: var(--color-oat);
+  background-color: var(--color-white-soft);
+  border: 1px solid var(--color-border-light);
   font-size: 1.3rem;
   transition: background-color var(--transition-base);
 }
 
 .cart-button:hover {
-  background-color: var(--color-border);
+  background-color: var(--color-border-light);
 }
 
 .cart-button__count {
@@ -88,7 +97,7 @@
   height: 20px;
   padding: 0 4px;
   border-radius: 999px;
-  background-color: var(--color-clay);
+  background-color: var(--color-brown);
   color: var(--color-white);
   font-size: 0.7rem;
   font-weight: 700;
@@ -107,7 +116,7 @@
 
 .product-card {
   background-color: var(--color-white);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border-light);
   border-radius: var(--radius-md);
   overflow: hidden;
   display: flex;
@@ -122,7 +131,7 @@
 
 .product-card__image-wrap {
   aspect-ratio: 4 / 3;
-  background-color: var(--color-oat);
+  background-color: var(--color-white-soft);
   overflow: hidden;
 }
 
@@ -143,23 +152,26 @@
 .product-card__name {
   font-family: var(--font-display);
   font-size: var(--fs-md);
+  color: var(--color-text-dark);
 }
 
 .product-card__desc {
-  color: var(--color-cocoa-soft);
+  color: var(--color-text-muted-dark);
   font-size: var(--fs-sm);
   flex: 1;
 }
 
 .product-card__price {
   font-weight: 700;
-  color: var(--color-clay-dark);
+  color: var(--color-brown-dark);
   font-size: var(--fs-md);
 }
 
+/* Botão "Adicionar ao carrinho": preto por padrão, vira marrom no hover
+   e verde-sálvia foi substituído por marrom escuro no estado "adicionado" */
 .product-card__add-btn {
   margin-top: 0.5rem;
-  background-color: var(--color-cream);
+  background-color: var(--color-black);
   color: var(--color-white);
   border-radius: var(--radius-sm);
   padding: 0.65rem 1rem;
@@ -170,18 +182,19 @@
 
 .product-card__add-btn:hover,
 .product-card__add-btn:focus-visible {
-  background-color: var(--color-clay);
+  background-color: var(--color-brown);
 }
 
 .product-card__add-btn.is-added {
-  background-color: var(--color-sage);
+  background-color: var(--color-brown-dark);
 }
 
 /* ---------- OVERLAY DO CARRINHO ---------- */
 .cart-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(74, 51, 39, 0.45);
+  background-color: rgba(16, 16, 16, 0.55);
+  backdrop-filter: blur(2px);
   z-index: 50;
   animation: fadeIn var(--transition-base) ease;
 }
@@ -196,9 +209,10 @@
   position: fixed;
   top: 0;
   right: 0;
+  bottom: 0;
   height: 100%;
   width: min(420px, 100%);
-  background-color: var(--color-cream);
+  background-color: var(--color-white);
   box-shadow: var(--shadow-strong);
   z-index: 60;
   display: flex;
@@ -217,23 +231,24 @@
   align-items: center;
   justify-content: space-between;
   padding: var(--space-sm) var(--space-md);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border-light);
 }
 
 .cart-drawer__header h2 {
   font-size: var(--fs-lg);
+  color: var(--color-text-dark);
 }
 
 .cart-drawer__close {
   font-size: 1.75rem;
   line-height: 1;
-  color: var(--color-cocoa-soft);
+  color: var(--color-text-muted-dark);
   padding: 0.25rem 0.5rem;
   border-radius: var(--radius-sm);
 }
 
 .cart-drawer__close:hover {
-  color: var(--color-clay);
+  color: var(--color-brown);
 }
 
 .cart-drawer__items {
@@ -246,7 +261,7 @@
 }
 
 .cart-empty {
-  color: var(--color-cocoa-soft);
+  color: var(--color-text-muted-dark);
   text-align: center;
   margin-top: var(--space-lg);
 }
@@ -255,7 +270,7 @@
   display: flex;
   gap: var(--space-sm);
   align-items: center;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border-light);
   padding-bottom: var(--space-sm);
 }
 
@@ -264,7 +279,7 @@
   height: 60px;
   border-radius: var(--radius-sm);
   object-fit: cover;
-  background-color: var(--color-oat);
+  background-color: var(--color-white-soft);
   flex-shrink: 0;
 }
 
@@ -276,13 +291,14 @@
 .cart-item__name {
   font-weight: 700;
   font-size: var(--fs-sm);
+  color: var(--color-text-dark);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .cart-item__meta {
-  color: var(--color-cocoa-soft);
+  color: var(--color-text-muted-dark);
   font-size: var(--fs-xs);
   display: flex;
   align-items: center;
@@ -294,14 +310,14 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border-light);
   border-radius: var(--radius-sm);
   padding: 0.1rem 0.4rem;
 }
 
 .cart-item__qty-btn {
   font-weight: 700;
-  color: var(--color-cocoa);
+  color: var(--color-text-dark);
   width: 20px;
   text-align: center;
 }
@@ -318,12 +334,14 @@
 .cart-item__subtotal {
   font-weight: 700;
   font-size: var(--fs-sm);
+  color: var(--color-text-dark);
   white-space: nowrap;
 }
 
 .cart-drawer__footer {
   padding: var(--space-md);
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-border-light);
+  background-color: var(--color-white-soft);
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
@@ -334,4 +352,6 @@
   justify-content: space-between;
   align-items: center;
   font-size: var(--fs-md);
+  color: var(--color-text-dark);
+  font-weight: 700;
 }
