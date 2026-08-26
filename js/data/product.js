@@ -1,24 +1,3 @@
-/**
- * =====================================================================
- * ARQUIVO: products.js
- * PASTA: js/data/
- * =====================================================================
- * Fonte única de dados dos produtos do ateliê.
- *
- * IMPORTANTE (segurança): estes dados são estáticos e definidos por nós
- * (dados confiáveis). Mesmo assim, toda a exibição desses campos no DOM
- * passa por sanitização em js/modules/ui.js (uso de textContent e da
- * função sanitizeText()), como boa prática — o mesmo pipeline de
- * renderização seria seguro mesmo se os dados viessem futuramente de
- * uma API externa ou de um CMS.
- *
- * Campo "image": aponte para o caminho real da foto do produto dentro
- * de assets/images/. Caso o arquivo não exista, a UI aplica automati-
- * camente uma imagem de placeholder (SVG embutido via data URI, sem
- * requisições externas) — ver js/modules/ui.js -> handleImageError().
- * =====================================================================
- */
-
 export const products = [
   {
     id: "sousplat-duas-cores",
