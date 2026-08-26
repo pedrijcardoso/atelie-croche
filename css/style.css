@@ -257,6 +257,7 @@ input:focus-visible {
 .about {
   background-color: var(--color-preto-suave);
   padding-block: var(--space-xl);
+  color: var(--color-branco-fumaca); /* Substitua pela cor desejada (hex, rgb, name, etc.) */
 }
 
 .about__inner {
