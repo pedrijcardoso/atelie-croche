@@ -1,19 +1,10 @@
 /* =====================================================================
    ARQUIVO: responsive.css
-   PASTA: css/
-   =====================================================================
-   Ajustes responsivos: mobile-first como base (definida nos outros
-   arquivos), com breakpoints progressivos para telas maiores e ajustes
-   pontuais para telas bem pequenas.
-
-   Nenhuma regra de layout/breakpoint foi alterada — apenas o token de
-   cor usado no bloco de alto contraste, para acompanhar a nova paleta.
    ===================================================================== */
 
-/* ---------- TELAS PEQUENAS (celulares até ~480px) ---------- */
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .hero__title {
-    font-size: var(--fs-xl);
+    font-size: 2.2rem;
   }
 
   .hero__subtitle {
@@ -21,12 +12,12 @@
   }
 
   .main-nav {
-    display: none; /* Em telas muito pequenas, prioriza logo + carrinho */
+    display: none; /* Mobile foca na marca e no carrinho */
   }
 
   .btn--lg {
     width: 100%;
-    padding: 0.9rem 1.5rem;
+    padding: 1rem 1.5rem;
   }
 
   .cart-drawer {
@@ -34,67 +25,17 @@
   }
 
   .product-grid {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: var(--space-sm);
   }
 
-  .cart-item {
-    flex-wrap: wrap;
-  }
-
-  .cart-item__remove {
-    margin-left: 0;
+  .about__card {
+    padding: var(--space-md);
   }
 }
 
-/* ---------- TABLETS (481px – 768px) ---------- */
-@media (min-width: 481px) and (max-width: 768px) {
-  .hero__title {
-    font-size: var(--fs-xl);
-  }
-
-  .product-grid {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  }
-}
-
-/* ---------- ESCONDE NAV EM TELAS MÉDIAS SE NECESSÁRIO ---------- */
-@media (max-width: 640px) {
-  .header__inner {
-    gap: var(--space-xs);
-  }
-
-  .brand__name {
-    font-size: 1rem;
-  }
-}
-
-/* ---------- DESKTOP (a partir de 1024px) ---------- */
 @media (min-width: 1024px) {
-  .hero__title {
-    font-size: 3.25rem;
-  }
-
   .product-grid {
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  }
-}
-
-/* ---------- TELAS GRANDES (a partir de 1440px) ---------- */
-@media (min-width: 1440px) {
-  .container {
-    padding-inline: 0;
-  }
-}
-
-/* ---------- MODO DE ALTO CONTRASTE / PREFERÊNCIAS DE ACESSIBILIDADE ---------- */
-@media (prefers-contrast: more) {
-  :root {
-    --color-border-light: #8C5A3C;
-    --color-border-dark: #C9A57E;
-  }
-
-  .btn {
-    border-width: 2px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
 }
