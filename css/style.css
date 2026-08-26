@@ -159,7 +159,7 @@ input:focus-visible {
   position: sticky;
   top: 0;
   z-index: 40;
-  background-color: var(--color-branco-fumaca);
+  background-color: var(--color-branco-neve); /* Fundo claro */
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -195,12 +195,12 @@ input:focus-visible {
 
 .main-nav a {
   font-weight: 600;
-  color: var(--color-preto-suave);
+  color: var(--color-cocoa); /* Texto escuro */
   transition: color var(--transition-base);
 }
 
 .main-nav a:hover {
-  color: var(--color-clay);
+  color: var(--color-clay); /* Destaque terracota no hover */
 }
 
 /* ---------- HERO / BANNER ---------- */
@@ -253,6 +253,13 @@ input:focus-visible {
 /* ---------- CATÁLOGO ---------- */
 .catalog {
   padding-block: var(--space-xl);
+  background-color: var(--color-branco-fumaca); /* Fundo claro levemente contrastado */
+}
+.catalog .section-title {
+  color: var(--color-cocoa); /* Título escuro */
+}
+.catalog .section-subtitle {
+  color: var(--color-cocoa-soft); /* Subtítulo em marrom suave */
 }
 
 /* ---------- SOBRE ---------- */
@@ -282,6 +289,13 @@ input:focus-visible {
 .contact {
   padding-block: var(--space-xl);
   text-align: center;
+  background-color: var(--color-branco-neve); /* Fundo claro */
+}
+.contact .section-title {
+  color: var(--color-cocoa); /* Título escuro */
+}
+.contact .section-subtitle {
+  color: var(--color-cocoa-soft); /* Subtítulo escuro suave */
 }
 
 .contact__inner {
