@@ -57,23 +57,26 @@ ul {
 }
 
 /* ---------- VARIÁVEIS GLOBAIS (DESIGN TOKENS) ---------- */
+/* ---------- VARIÁVEIS GLOBAIS (DESIGN TOKENS) ---------- */
 :root {
-  /* Paleta artesanal: barbante cru, terracota, cacau e sálvia */
-  --color-cream:        #FBF6EE; /* fundo principal — algodão cru */
-  --color-oat:          #F1E4D0; /* fundo alternado — linho */
-  --color-clay:         #C1704B; /* terracota — cor de destaque/ação */
-  --color-clay-dark:    #A2593A; /* terracota escurecida — hover */
-  --color-cocoa:        #4A3327; /* marrom cacau — texto principal */
-  --color-cocoa-soft:   #6E5644; /* marrom suave — texto secundário */
-  --color-sage:         #808A5E; /* verde-sálvia — contraponto/sucesso */
-  --color-sage-dark:    #656E49;
-  --color-border:       #E3D3BB;
-  --color-white:        #FFFFFF;
-  --color-danger:       #B4483A;
+  /* Novas variáveis solicitadas */
   --color-preto-suave:  #121212;
   --color-cinza-carvao: #1C1C1C;
   --color-branco-neve:  #FAFAFA;
   --color-branco-fumaca:#F5F5F5;
+  --color-clay:         #C1704B; /* terracota — cor de destaque/ação */
+  --color-clay-dark:    #A2593A; /* terracota escurecida — hover */
+  --color-cocoa:        #4A3327; /* marrom cacau — texto principal (em fundos claros) */
+  --color-cocoa-soft:   #6E5644; /* marrom suave — texto secundário (em fundos claros) */
+  --color-sage:         #808A5E; /* verde-sálvia — contraponto/sucesso */
+
+  /* Mapeamento de harmonia mantendo a estrutura sem alterar a lógica do código */
+  --color-cream:        var(--color-preto-suave);  /* Fundo principal da página/seções */
+  --color-oat:          var(--color-cinza-carvao); /* Fundo alternativo/secundário */
+  --color-white:        var(--color-cinza-carvao); /* Fundo de componentes/cards */
+  --color-sage-dark:    #A5B27D;                   /* Sálvia mais clara para fundos escuros */
+  --color-border:       #2A2A2A;                   /* Bordas discretas em tom escuro */
+  --color-danger:       #B4483A;
 
   /* Tipografia: par serifado (personalidade artesanal) + sans utilitária */
   --font-display: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
@@ -99,8 +102,8 @@ ul {
   --radius-md: 14px;
   --radius-lg: 28px;
 
-  --shadow-soft: 0 8px 24px rgba(74, 51, 39, 0.12);
-  --shadow-strong: 0 16px 40px rgba(74, 51, 39, 0.22);
+  --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.3);
+  --shadow-strong: 0 16px 40px rgba(0, 0, 0, 0.5);
 
   --max-width: 1180px;
   --transition-base: 0.2s ease;
@@ -109,8 +112,8 @@ ul {
 /* ---------- TIPOGRAFIA GLOBAL ---------- */
 body {
   font-family: var(--font-body);
-  color: var(--color-cocoa);
-  background-color: var(--color-branco-neve);
+  color: var(--color-branco-fumaca);
+  background-color: var(--color-preto-suave);
   line-height: 1.6;
   font-size: var(--fs-base);
   -webkit-font-smoothing: antialiased;
@@ -118,7 +121,7 @@ body {
 
 h1, h2, h3 {
   font-family: var(--font-display);
-  color: var(--color-cocoa);
+  color: var(--color-branco-neve);
   line-height: 1.2;
   font-weight: 700;
 }
@@ -156,7 +159,7 @@ input:focus-visible {
   position: sticky;
   top: 0;
   z-index: 40;
-  background-color: var(--color-branco-neve);
+  background-color: var(--color-cinza-carvao);
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -192,7 +195,7 @@ input:focus-visible {
 
 .main-nav a {
   font-weight: 600;
-  color: var(--color-cocoa-soft);
+  color: var(--color-branco-fumaca);
   transition: color var(--transition-base);
 }
 
@@ -204,7 +207,7 @@ input:focus-visible {
 .hero {
   position: relative;
   padding-block: var(--space-xl) var(--space-lg);
-  background: linear-gradient(180deg, var(--color-preto-suave) 0%, var(--color-cream) 100%);
+  background: linear-gradient(180deg, var(--color-preto-suave) 0%, var(--color-cinza-carvao) 100%);
   overflow: hidden;
 }
 
@@ -230,10 +233,9 @@ input:focus-visible {
   font-size: var(--fs-xxl);
 }
 
-.hero__subtitle {
-  color: var(--color-cocoa-soft);
-  font-size: var(--fs-md);
-  max-width: 55ch;
+.hero__subtitle,
+.section-subtitle {
+  color: #CCCCCC; /* Tom claro garantindo legibilidade */
 }
 
 /* Divisor decorativo em "ponto de crochê" — elemento de assinatura visual,
@@ -255,12 +257,12 @@ input:focus-visible {
 
 /* ---------- SOBRE ---------- */
 .about {
-  background-color: var(--color-preto-suave);
+  background-color: var(--color-cinza-carvao);
   padding-block: var(--space-xl);
-  color: var(--color-branco-fumaca); /* Substitua pela cor desejada (hex, rgb, name, etc.) */
+  color: var(--color-branco-fumaca);
 }
 .about .section-title {
-  color: var(--color-branco-fumaca); /* Coloque a cor desejada aqui */
+  color: var(--color-branco-neve);
 }
 
 .about__inner {
@@ -293,11 +295,12 @@ input:focus-visible {
 
 /* ---------- RODAPÉ ---------- */
 .site-footer {
-  background-color: var(--color-cocoa);
-  color: var(--color-cream);
+  background-color: var(--color-preto-suave);
+  color: var(--color-branco-fumaca);
   text-align: center;
   padding-block: var(--space-md);
   font-size: var(--fs-sm);
+  border-top: 1px solid var(--color-border);
 }
 
 .footer__note {
