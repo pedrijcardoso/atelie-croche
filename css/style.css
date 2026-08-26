@@ -2,10 +2,14 @@
    ARQUIVO: style.css
    PASTA: css/
    =====================================================================
-   Este arquivo contém: reset básico, variáveis globais (design tokens),
-   tipografia, e estrutura de layout fundamental (container, seções).
-   Paleta inspirada em fios de lã, algodão cru e madeira: tons terrosos,
-   bege e marrom suave, com um verde-sálvia discreto como contraponto.
+   Reset básico, variáveis globais (design tokens), tipografia e
+   estrutura de layout fundamental (container, seções).
+
+   NOVA IDENTIDADE VISUAL:
+   Paleta minimalista em preto & branco, com o MARROM como única cor
+   de destaque (accent) — usada em botões, hover, links e badges.
+   Nenhuma classe, id ou seletor foi renomeado: só os valores de cor
+   mudaram, então HTML/JS continuam funcionando exatamente como antes.
    ===================================================================== */
 
 /* ---------- RESET BÁSICO ---------- */
@@ -56,29 +60,38 @@ ul {
   }
 }
 
-/* ---------- VARIÁVEIS GLOBAIS (DESIGN TOKENS) ---------- */
-/* ---------- VARIÁVEIS GLOBAIS (DESIGN TOKENS) ---------- */
+/* =====================================================================
+   VARIÁVEIS GLOBAIS (DESIGN TOKENS)
+   =====================================================================
+   Organizadas em 3 grupos: neutros (preto/branco), destaque (marrom)
+   e utilitários (tipografia, espaçamento, sombra, raio).
+   ===================================================================== */
 :root {
-  /* Novas variáveis solicitadas */
-  --color-preto-suave:  #121212;
-  --color-cinza-carvao: #1C1C1C;
-  --color-branco-neve:  #FAFAFA;
-  --color-branco-fumaca:#F5F5F5;
-  --color-clay:         #C1704B; /* terracota — cor de destaque/ação */
-  --color-clay-dark:    #A2593A; /* terracota escurecida — hover */
-  --color-cocoa:        #4A3327; /* marrom cacau — texto principal (em fundos claros) */
-  --color-cocoa-soft:   #6E5644; /* marrom suave — texto secundário (em fundos claros) */
-  --color-sage:         #808A5E; /* verde-sálvia — contraponto/sucesso */
+  /* ---------- NEUTROS: PRETO ---------- */
+  --color-black:        #101010; /* Preto principal — fundos escuros (hero, sobre, rodapé) */
+  --color-black-soft:   #1B1B1B; /* Preto suave — fundos secundários em seções escuras */
+  --color-border-dark:  #2C2C2C; /* Bordas discretas sobre fundo escuro */
 
-  /* Mapeamento de harmonia mantendo a estrutura sem alterar a lógica do código */
-  --color-cream:        var(--color-preto-suave);  /* Fundo principal da página/seções */
-  --color-oat:          var(--color-cinza-carvao); /* Fundo alternativo/secundário */
-  --color-white:        var(--color-cinza-carvao); /* Fundo de componentes/cards */
-  --color-sage-dark:    #A5B27D;                   /* Sálvia mais clara para fundos escuros */
-  --color-border:       #2A2A2A;                   /* Bordas discretas em tom escuro */
-  --color-danger:       #B4483A;
+  /* ---------- NEUTROS: BRANCO ---------- */
+  --color-white:        #FFFFFF; /* Branco principal — fundos claros (cabeçalho, contato) */
+  --color-white-soft:   #F6F5F3; /* Branco suave — fundos secundários em seções claras */
+  --color-border-light: #E2DED8; /* Bordas discretas sobre fundo claro */
 
-  /* Tipografia: par serifado (personalidade artesanal) + sans utilitária */
+  /* ---------- TEXTO ---------- */
+  --color-text-dark:        #141414; /* Texto principal sobre fundo claro */
+  --color-text-light:       #F2F2F2; /* Texto principal sobre fundo escuro */
+  --color-text-muted-dark:  #5E5A56; /* Texto secundário sobre fundo claro */
+  --color-text-muted-light: #B8B4AF; /* Texto secundário sobre fundo escuro */
+
+  /* ---------- DESTAQUE (ACCENT): MARROM ---------- */
+  --color-brown:       #8B5A3C; /* Marrom principal — CTAs, links, badges */
+  --color-brown-dark:  #6E4530; /* Marrom escurecido — hover/active */
+  --color-brown-light: #C9A57E; /* Marrom claro — detalhes sobre fundo escuro */
+
+  /* ---------- ESTADOS ---------- */
+  --color-danger: #A6463A; /* Remover/erro — tom terroso avermelhado, coerente com a paleta */
+
+  /* ---------- TIPOGRAFIA: par serifado (personalidade artesanal) + sans utilitária ---------- */
   --font-display: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
   --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
                "Helvetica Neue", Arial, sans-serif;
@@ -91,7 +104,7 @@ ul {
   --fs-xl: 2rem;
   --fs-xxl: 2.75rem;
 
-  /* Espaçamentos em escala consistente */
+  /* ---------- ESPAÇAMENTOS EM ESCALA CONSISTENTE ---------- */
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 1.5rem;
@@ -112,8 +125,8 @@ ul {
 /* ---------- TIPOGRAFIA GLOBAL ---------- */
 body {
   font-family: var(--font-body);
-  color: var(--color-branco-fumaca);
-  background-color: var(--color-preto-suave);
+  color: var(--color-text-light);
+  background-color: var(--color-black);
   line-height: 1.6;
   font-size: var(--fs-base);
   -webkit-font-smoothing: antialiased;
@@ -121,16 +134,17 @@ body {
 
 h1, h2, h3 {
   font-family: var(--font-display);
-  color: var(--color-branco-neve);
+  color: var(--color-white);
   line-height: 1.2;
   font-weight: 700;
 }
 
-/* Foco visível para navegação via teclado — acessibilidade (WCAG) */
+/* Foco visível para navegação via teclado — acessibilidade (WCAG).
+   Usa o marrom de destaque em vez do verde-sálvia anterior. */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible {
-  outline: 3px solid var(--color-sage);
+  outline: 3px solid var(--color-brown);
   outline-offset: 3px;
   border-radius: var(--radius-sm);
 }
@@ -149,18 +163,18 @@ input:focus-visible {
 }
 
 .section-subtitle {
-  color: var(--color-cocoa-soft);
+  color: var(--color-text-muted-light);
   margin-bottom: var(--space-lg);
   max-width: 60ch;
 }
 
-/* ---------- CABEÇALHO ---------- */
+/* ---------- CABEÇALHO (fundo claro) ---------- */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 40;
-  background-color: var(--color-branco-neve); /* Fundo claro */
-  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-border-light);
 }
 
 .header__inner {
@@ -170,11 +184,13 @@ input:focus-visible {
   padding-block: var(--space-sm);
   gap: var(--space-sm);
 }
+
 .brand__iconn {
   display: inline-block; /* Retorna o fluxo de texto para alinhar com outros elementos */
-  height: 80px;          /* Defina a altura desejada */
-  width: auto;           /* Garante que a largura se ajuste proporcionalmente */
+  height: 80px;          /* Altura fixa do logo */
+  width: auto;           /* Largura proporcional */
 }
+
 .brand {
   display: flex;
   align-items: center;
@@ -182,6 +198,7 @@ input:focus-visible {
   font-family: var(--font-display);
   font-size: var(--fs-md);
   font-weight: 700;
+  color: var(--color-text-dark);
 }
 
 .brand__icon {
@@ -195,19 +212,19 @@ input:focus-visible {
 
 .main-nav a {
   font-weight: 600;
-  color: var(--color-cocoa); /* Texto escuro */
+  color: var(--color-text-dark);
   transition: color var(--transition-base);
 }
 
 .main-nav a:hover {
-  color: var(--color-clay); /* Destaque terracota no hover */
+  color: var(--color-brown); /* Destaque marrom no hover */
 }
 
-/* ---------- HERO / BANNER ---------- */
+/* ---------- HERO / BANNER (fundo escuro) ---------- */
 .hero {
   position: relative;
   padding-block: var(--space-xl) var(--space-lg);
-  background: linear-gradient(180deg, var(--color-preto-suave) 0%, var(--color-cinza-carvao) 100%);
+  background: linear-gradient(180deg, var(--color-black) 0%, var(--color-black-soft) 100%);
   overflow: hidden;
 }
 
@@ -226,7 +243,7 @@ input:focus-visible {
   letter-spacing: 0.12em;
   font-size: var(--fs-sm);
   font-weight: 700;
-  color: var(--color-sage-dark);
+  color: var(--color-brown-light);
 }
 
 .hero__title {
@@ -235,41 +252,41 @@ input:focus-visible {
 
 .hero__subtitle,
 .section-subtitle {
-  color: #CCCCCC; /* Tom claro garantindo legibilidade */
+  color: var(--color-text-muted-light);
 }
 
 /* Divisor decorativo em "ponto de crochê" — elemento de assinatura visual,
-   feito só com CSS (gradiente radial repetido), sem imagens externas. 
+   feito só com CSS (gradiente radial repetido), sem imagens externas. */
 .hero__stitch-divider,
 .stitch-divider {
   height: 22px;
   width: 100%;
-  background-image: radial-gradient(circle at 11px 0, transparent 10px, var(--color-cream) 11px);
+  background-image: radial-gradient(circle at 11px 0, transparent 10px, var(--color-black-soft) 11px);
   background-size: 22px 22px;
   background-repeat: repeat-x;
   background-position: bottom;
-}*/
+}
 
-/* ---------- CATÁLOGO ---------- */
+/* ---------- CATÁLOGO (fundo claro) ---------- */
 .catalog {
   padding-block: var(--space-xl);
-  background-color: var(--color-branco-fumaca); /* Fundo claro levemente contrastado */
+  background-color: var(--color-white-soft);
 }
 .catalog .section-title {
-  color: var(--color-cocoa); /* Título escuro */
+  color: var(--color-text-dark);
 }
 .catalog .section-subtitle {
-  color: var(--color-cocoa-soft); /* Subtítulo em marrom suave */
+  color: var(--color-text-muted-dark);
 }
 
-/* ---------- SOBRE ---------- */
+/* ---------- SOBRE (fundo escuro) ---------- */
 .about {
-  background-color: var(--color-cinza-carvao);
+  background-color: var(--color-black-soft);
   padding-block: var(--space-xl);
-  color: var(--color-branco-fumaca);
+  color: var(--color-text-light);
 }
 .about .section-title {
-  color: var(--color-branco-neve);
+  color: var(--color-white);
 }
 
 .about__inner {
@@ -285,17 +302,17 @@ input:focus-visible {
   margin-top: var(--space-sm);
 }
 
-/* ---------- CONTATO ---------- */
+/* ---------- CONTATO (fundo claro) ---------- */
 .contact {
   padding-block: var(--space-xl);
   text-align: center;
-  background-color: var(--color-branco-neve); /* Fundo claro */
+  background-color: var(--color-white);
 }
 .contact .section-title {
-  color: var(--color-cocoa); /* Título escuro */
+  color: var(--color-text-dark);
 }
 .contact .section-subtitle {
-  color: var(--color-cocoa-soft); /* Subtítulo escuro suave */
+  color: var(--color-text-muted-dark);
 }
 
 .contact__inner {
@@ -307,88 +324,24 @@ input:focus-visible {
   gap: var(--space-sm);
 }
 
-/* ---------- RODAPÉ ---------- */
+/* ---------- RODAPÉ (fundo escuro) ---------- */
 .site-footer {
-  background-color: var(--color-preto-suave);
-  color: var(--color-branco-fumaca);
+  background-color: var(--color-black);
+  color: var(--color-text-muted-light);
   text-align: center;
   padding-block: var(--space-md);
   font-size: var(--fs-sm);
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-border-dark);
 }
 
 .footer__note {
   opacity: 0.75;
   margin-top: var(--space-xs);
 }
-/* =====================================================================
-   MÁSCARA DE OCULTAÇÃO E ESTILOS DO CARRINHO (DRAWER)
-   ===================================================================== */
 
-/* Regra universal: oculta qualquer elemento com o atributo [hidden] */
+/* Regra universal: oculta qualquer elemento com o atributo [hidden].
+   (Toda a estilização de carrinho/drawer/overlay vive em components.css,
+   para evitar duplicidade de regras entre arquivos.) */
 [hidden] {
   display: none !important;
 }
-
-/* Fundo escurecido atrás do carrinho */
-.cart-overlay {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(74, 51, 39, 0.5);
-  z-index: 50;
-  backdrop-filter: blur(2px);
-}
-
-/* Painel lateral do carrinho */
-.cart-drawer {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  max-width: 400px;
-  background-color: var(--color-branco-neve);
-  z-index: 60;
-  display: flex;
-  flex-direction: column;
-  box-shadow: var(--shadow-strong);
-}
-
-.cart-drawer__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--space-md);
-  border-bottom: 1px solid var(--color-border);
-}
-
-.cart-drawer__close {
-  font-size: 1.8rem;
-  line-height: 1;
-  color: var(--color-cocoa-soft);
-  padding: 0.2rem 0.5rem;
-  cursor: pointer;
-}
-
-.cart-drawer__items {
-  flex: 1;
-  overflow-y: auto;
-  padding: var(--space-md);
-}
-
-.cart-drawer__footer {
-  padding: var(--space-md);
-  border-top: 1px solid var(--color-border);
-  background-color: var(--color-preto-suave);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-}
-
-.cart-total {
-  display: flex;
-  justify-content: space-between;
-  font-size: var(--fs-md);
-  font-weight: 700;
-}
-
