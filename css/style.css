@@ -159,7 +159,7 @@ input:focus-visible {
   position: sticky;
   top: 0;
   z-index: 40;
-  background-color: var(--color-cinza-carvao);
+  background-color: var(--color-branco-fumaca);
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -195,7 +195,7 @@ input:focus-visible {
 
 .main-nav a {
   font-weight: 600;
-  color: var(--color-branco-fumaca);
+  color: var(--color-preto-suave);
   transition: color var(--transition-base);
 }
 
