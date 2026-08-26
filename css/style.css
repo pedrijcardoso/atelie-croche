@@ -255,17 +255,7 @@ input:focus-visible {
   color: var(--color-text-muted-light);
 }
 
-/* Divisor decorativo em "ponto de crochê" — elemento de assinatura visual,
-   feito só com CSS (gradiente radial repetido), sem imagens externas. */
-.hero__stitch-divider,
-.stitch-divider {
-  height: 22px;
-  width: 100%;
-  background-image: radial-gradient(circle at 11px 0, transparent 10px, var(--color-black-soft) 11px);
-  background-size: 22px 22px;
-  background-repeat: repeat-x;
-  background-position: bottom;
-}
+
 
 /* ---------- CATÁLOGO (fundo claro) ---------- */
 .catalog {
