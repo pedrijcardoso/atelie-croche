@@ -1,18 +1,7 @@
 /* =====================================================================
-   ARQUIVO: style.css
-   PASTA: css/
-   =====================================================================
-   Reset básico, variáveis globais (design tokens), tipografia e
-   estrutura de layout fundamental (container, seções).
-
-   NOVA IDENTIDADE VISUAL:
-   Paleta minimalista em preto & branco, com o MARROM como única cor
-   de destaque (accent) — usada em botões, hover, links e badges.
-   Nenhuma classe, id ou seletor foi renomeado: só os valores de cor
-   mudaram, então HTML/JS continuam funcionando exatamente como antes.
+   ARQUIVO: style.css (Padrão Visual 2026)
    ===================================================================== */
 
-/* ---------- RESET BÁSICO ---------- */
 *,
 *::before,
 *::after {
@@ -23,6 +12,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 img {
@@ -46,7 +36,6 @@ ul {
   list-style: none;
 }
 
-/* Respeita usuários que preferem menos animação (acessibilidade) */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -60,73 +49,64 @@ ul {
   }
 }
 
-/* =====================================================================
-   VARIÁVEIS GLOBAIS (DESIGN TOKENS)
-   =====================================================================
-   Organizadas em 3 grupos: neutros (preto/branco), destaque (marrom)
-   e utilitários (tipografia, espaçamento, sombra, raio).
-   ===================================================================== */
+/* ---------- DESIGN TOKENS MODERNOS 2026 ---------- */
 :root {
-  /* ---------- NEUTROS: PRETO ---------- */
-  --color-black:        #101010; /* Preto principal — fundos escuros (hero, sobre, rodapé) */
-  --color-black-soft:   #1B1B1B; /* Preto suave — fundos secundários em seções escuras */
-  --color-border-dark:  #2C2C2C; /* Bordas discretas sobre fundo escuro */
+  --color-black:        #121212;
+  --color-black-soft:   #1A1918;
+  --color-border-dark:  #2A2826;
 
-  /* ---------- NEUTROS: BRANCO ---------- */
-  --color-white:        #FFFFFF; /* Branco principal — fundos claros (cabeçalho, contato) */
-  --color-white-soft:   #F6F5F3; /* Branco suave — fundos secundários em seções claras */
-  --color-border-light: #E2DED8; /* Bordas discretas sobre fundo claro */
+  --color-white:        #FFFFFF;
+  --color-white-soft:   #FAF8F5; /* Manteiga/Creme suave moderno */
+  --color-border-light: #EBE6DF;
 
-  /* ---------- TEXTO ---------- */
-  --color-text-dark:        #141414; /* Texto principal sobre fundo claro */
-  --color-text-light:       #F2F2F2; /* Texto principal sobre fundo escuro */
-  --color-text-muted-dark:  #5E5A56; /* Texto secundário sobre fundo claro */
-  --color-text-muted-light: #B8B4AF; /* Texto secundário sobre fundo escuro */
+  --color-text-dark:        #1A1817;
+  --color-text-light:       #F7F5F2;
+  --color-text-muted-dark:  #6B6560;
+  --color-text-muted-light: #A39D96;
 
-  /* ---------- DESTAQUE (ACCENT): MARROM ---------- */
-  --color-brown:       #8B5A3C; /* Marrom principal — CTAs, links, badges */
-  --color-brown-dark:  #6E4530; /* Marrom escurecido — hover/active */
-  --color-brown-light: #C9A57E; /* Marrom claro — detalhes sobre fundo escuro */
+  /* Accent: Marrom quente e elegante */
+  --color-brown:       #8B5A3C;
+  --color-brown-dark:  #6E4530;
+  --color-brown-light: #D9B38C;
+  --color-brown-bg:    #F5EFE8;
 
-  /* ---------- ESTADOS ---------- */
-  --color-danger: #A6463A; /* Remover/erro — tom terroso avermelhado, coerente com a paleta */
+  --color-danger: #B33A2B;
 
-  /* ---------- TIPOGRAFIA: par serifado (personalidade artesanal) + sans utilitária ---------- */
-  --font-display: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
-  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-               "Helvetica Neue", Arial, sans-serif;
+  /* Tipografia 2026 */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
 
-  --fs-xs: 0.8rem;
-  --fs-sm: 0.9rem;
+  --fs-xs: 0.825rem;
+  --fs-sm: 0.925rem;
   --fs-base: 1rem;
-  --fs-md: 1.15rem;
-  --fs-lg: 1.5rem;
-  --fs-xl: 2rem;
-  --fs-xxl: 2.75rem;
+  --fs-md: 1.2rem;
+  --fs-lg: 1.6rem;
+  --fs-xl: 2.2rem;
+  --fs-xxl: 3.4rem;
 
-  /* ---------- ESPAÇAMENTOS EM ESCALA CONSISTENTE ---------- */
   --space-xs: 0.5rem;
   --space-sm: 1rem;
-  --space-md: 1.5rem;
-  --space-lg: 2.5rem;
-  --space-xl: 4rem;
+  --space-md: 1.75rem;
+  --space-lg: 3rem;
+  --space-xl: 5rem;
 
-  --radius-sm: 6px;
-  --radius-md: 14px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
   --radius-lg: 28px;
+  --radius-full: 9999px;
 
-  --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.3);
-  --shadow-strong: 0 16px 40px rgba(0, 0, 0, 0.5);
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.04);
+  --shadow-medium: 0 14px 35px rgba(27, 25, 24, 0.08);
+  --shadow-strong: 0 20px 50px rgba(0, 0, 0, 0.22);
 
-  --max-width: 1180px;
-  --transition-base: 0.2s ease;
+  --max-width: 1200px;
+  --transition-base: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ---------- TIPOGRAFIA GLOBAL ---------- */
 body {
   font-family: var(--font-body);
-  color: var(--color-text-light);
-  background-color: var(--color-black);
+  color: var(--color-text-dark);
+  background-color: var(--color-white-soft);
   line-height: 1.6;
   font-size: var(--fs-base);
   -webkit-font-smoothing: antialiased;
@@ -134,13 +114,11 @@ body {
 
 h1, h2, h3 {
   font-family: var(--font-display);
-  color: var(--color-white);
-  line-height: 1.2;
+  line-height: 1.15;
   font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
-/* Foco visível para navegação via teclado — acessibilidade (WCAG).
-   Usa o marrom de destaque em vez do verde-sálvia anterior. */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible {
@@ -149,7 +127,6 @@ input:focus-visible {
   border-radius: var(--radius-sm);
 }
 
-/* ---------- LAYOUT / ESTRUTURA ---------- */
 .container {
   width: 100%;
   max-width: var(--max-width);
@@ -159,150 +136,157 @@ input:focus-visible {
 
 .section-title {
   font-size: var(--fs-xl);
+  color: var(--color-text-dark);
   margin-bottom: var(--space-xs);
 }
 
 .section-subtitle {
-  color: var(--color-text-muted-light);
+  color: var(--color-text-muted-dark);
   margin-bottom: var(--space-lg);
-  max-width: 60ch;
+  font-size: var(--fs-md);
+  max-width: 55ch;
 }
 
-/* ---------- CABEÇALHO (fundo claro) ---------- */
+/* ---------- CABEÇALHO FIXO COM GLASSMORPHISM ---------- */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 40;
-  background-color: var(--color-white);
-  border-bottom: 1px solid var(--color-border-light);
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(235, 230, 223, 0.7);
+  transition: var(--transition-base);
 }
 
 .header__inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-block: var(--space-sm);
-  gap: var(--space-sm);
+  padding-block: var(--space-xs);
 }
 
 .brand__iconn {
-  display: inline-block; /* Retorna o fluxo de texto para alinhar com outros elementos */
-  height: 80px;          /* Altura fixa do logo */
-  width: auto;           /* Largura proporcional */
+  height: 52px;
+  width: auto;
+  transition: transform var(--transition-base);
 }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-display);
-  font-size: var(--fs-md);
-  font-weight: 700;
-  color: var(--color-text-dark);
-}
-
-.brand__icon {
-  font-size: 1.4rem;
+.brand:hover .brand__iconn {
+  transform: scale(1.03);
 }
 
 .main-nav__list {
   display: flex;
-  gap: var(--space-md);
+  gap: var(--space-lg);
 }
 
 .main-nav a {
   font-weight: 600;
+  font-size: var(--fs-sm);
   color: var(--color-text-dark);
   transition: color var(--transition-base);
 }
 
 .main-nav a:hover {
-  color: var(--color-brown); /* Destaque marrom no hover */
+  color: var(--color-brown);
 }
 
-/* ---------- HERO / BANNER (fundo escuro) ---------- */
+/* ---------- HERO MODERNIZADO ---------- */
 .hero {
   position: relative;
   padding-block: var(--space-xl) var(--space-lg);
-  background: linear-gradient(180deg, var(--color-black) 0%, var(--color-black-soft) 100%);
-  overflow: hidden;
+  background: radial-gradient(circle at 50% 0%, #F5EFE8 0%, var(--color-white-soft) 70%);
+  text-align: center;
 }
 
 .hero__inner {
-  max-width: 760px;
-  text-align: center;
+  max-width: 820px;
   margin-inline: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-md);
 }
 
-.hero__eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: var(--fs-sm);
-  font-weight: 700;
-  color: var(--color-brown-light);
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 1.2rem;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--color-brown-dark);
+  box-shadow: var(--shadow-soft);
 }
 
 .hero__title {
   font-size: var(--fs-xxl);
-}
-
-.hero__subtitle,
-.section-subtitle {
-  color: var(--color-text-muted-light);
-}
-
-
-
-/* ---------- CATÁLOGO (fundo claro) ---------- */
-.catalog {
-  padding-block: var(--space-xl);
-  background-color: var(--color-white-soft);
-}
-.catalog .section-title {
   color: var(--color-text-dark);
 }
-.catalog .section-subtitle {
-  color: var(--color-text-muted-dark);
+
+.hero__title em {
+  font-style: italic;
+  color: var(--color-brown);
 }
 
-/* ---------- SOBRE (fundo escuro) ---------- */
-.about {
-  background-color: var(--color-black-soft);
-  padding-block: var(--space-xl);
-  color: var(--color-text-light);
+.hero__subtitle {
+  color: var(--color-text-muted-dark);
+  font-size: var(--fs-md);
+  max-width: 60ch;
 }
-.about .section-title {
-  color: var(--color-white);
+
+/* ---------- CATÁLOGO ---------- */
+.catalog {
+  padding-block: var(--space-xl);
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  margin-block: var(--space-md);
+}
+
+/* ---------- SOBRE ---------- */
+.about {
+  padding-block: var(--space-xl);
 }
 
 .about__inner {
-  max-width: 760px;
+  max-width: 860px;
   margin-inline: auto;
+}
+
+.about__card {
+  background-color: var(--color-black-soft);
+  color: var(--color-text-light);
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-medium);
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
 }
 
-.about__text p + p {
-  margin-top: var(--space-sm);
+.about__card .section-title {
+  color: var(--color-white);
 }
 
-/* ---------- CONTATO (fundo claro) ---------- */
+.about__card p {
+  color: var(--color-text-muted-light);
+  font-size: var(--fs-md);
+}
+
+.about__card p + p {
+  margin-top: var(--space-md);
+}
+
+.about__card strong {
+  color: var(--color-brown-light);
+}
+
+/* ---------- CONTATO ---------- */
 .contact {
   padding-block: var(--space-xl);
   text-align: center;
-  background-color: var(--color-white);
-}
-.contact .section-title {
-  color: var(--color-text-dark);
-}
-.contact .section-subtitle {
-  color: var(--color-text-muted-dark);
 }
 
 .contact__inner {
@@ -311,10 +295,9 @@ input:focus-visible {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-sm);
 }
 
-/* ---------- RODAPÉ (fundo escuro) ---------- */
+/* ---------- RODAPÉ ---------- */
 .site-footer {
   background-color: var(--color-black);
   color: var(--color-text-muted-light);
@@ -325,13 +308,10 @@ input:focus-visible {
 }
 
 .footer__note {
-  opacity: 0.75;
+  opacity: 0.8;
   margin-top: var(--space-xs);
 }
 
-/* Regra universal: oculta qualquer elemento com o atributo [hidden].
-   (Toda a estilização de carrinho/drawer/overlay vive em components.css,
-   para evitar duplicidade de regras entre arquivos.) */
 [hidden] {
   display: none !important;
 }
