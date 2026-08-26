@@ -42,11 +42,11 @@ export const products = [
     image: "assets/portacopo2cores.jpg",
   },
   {
-    id: "conjunto-baby",
-    name: "Conjunto Baby Soft",
-    description: "Sapatinho e touca em algodão macio, ideal para recém-nascidos.",
-    price: 74.5,
-    image: "assets/images/conjunto-baby.jpg",
+    id: "porta-isqueiro-ou-gloss",
+    name: "Porta isqueiro ou gloss cogumelo",
+    description: "Feito com fio ecológico, 85% algodão e 15% outras fibras. Tamanho da peça: 25cm aprox.",
+    price: 15,
+    image: "assets/portaisqueiro.jpg",
   },
   {
     id: "porta-copos",
