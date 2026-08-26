@@ -35,11 +35,11 @@ export const products = [
     image: "assets/bolsaestreladomar.jpg",
   },
   {
-    id: "tapete-oval",
-    name: "Tapete Oval Rústico",
-    description: "Tapete tecido em fio de trapilho, perfeito para sala ou quarto.",
-    price: 129.0,
-    image: "assets/images/tapete-oval.jpg",
+    id: "porta-copo-2-cores",
+    name: "Porta copo 2 cores",
+    description: "Feito com fio ecológico, 85% algodão e 15% outras fibras. Tamanho da peça: 11,5cm aprox.",
+    price: 6,
+    image: "assets/portacopo2cores.jpg",
   },
   {
     id: "conjunto-baby",
