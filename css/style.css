@@ -204,7 +204,7 @@ input:focus-visible {
 .hero {
   position: relative;
   padding-block: var(--space-xl) var(--space-lg);
-  background: linear-gradient(180deg, var(--color-branco-fumaca) 0%, var(--color-cream) 100%);
+  background: linear-gradient(180deg, var(--color-preto-suave) 0%, var(--color-cream) 100%);
   overflow: hidden;
 }
 
