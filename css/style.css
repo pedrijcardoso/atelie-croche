@@ -260,7 +260,7 @@ input:focus-visible {
   color: var(--color-branco-fumaca); /* Substitua pela cor desejada (hex, rgb, name, etc.) */
 }
 .about .section-title {
-  color: var(--color-branco-fumaca; /* Coloque a cor desejada aqui */
+  color: var(--color-branco-fumaca); /* Coloque a cor desejada aqui */
 }
 
 .about__inner {
