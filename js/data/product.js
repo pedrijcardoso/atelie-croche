@@ -28,11 +28,11 @@ export const products = [
     image: "assets/sousplat2cores.jpg",
   },
   {
-    id: "bolsa-palha",
-    name: "Bolsa de Crochê Palha",
-    description: "Bolsa artesanal em fio de malha, forrada e com alça reforçada.",
-    price: 159.9,
-    image: "assets/images/bolsa-palha.jpg",
+    id: "bolsa-estrela-do-mar",
+    name: "Bolsa de Estrela do Mar",
+    description: "Feito com fio ecológico, 85% algodão, 15% outras fibras e fio 100% algodão. Tamanho da peça: 29cm (largura) x 31cm (altura) aprox.",
+    price: 60,
+    image: "assets/bolsaestreladomar.jpg",
   },
   {
     id: "tapete-oval",
