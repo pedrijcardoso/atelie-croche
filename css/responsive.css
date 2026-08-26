@@ -5,6 +5,9 @@
    Ajustes responsivos: mobile-first como base (definida nos outros
    arquivos), com breakpoints progressivos para telas maiores e ajustes
    pontuais para telas bem pequenas.
+
+   Nenhuma regra de layout/breakpoint foi alterada — apenas o token de
+   cor usado no bloco de alto contraste, para acompanhar a nova paleta.
    ===================================================================== */
 
 /* ---------- TELAS PEQUENAS (celulares até ~480px) ---------- */
@@ -87,7 +90,8 @@
 /* ---------- MODO DE ALTO CONTRASTE / PREFERÊNCIAS DE ACESSIBILIDADE ---------- */
 @media (prefers-contrast: more) {
   :root {
-    --color-border: #8C5A3C;
+    --color-border-light: #8C5A3C;
+    --color-border-dark: #C9A57E;
   }
 
   .btn {
